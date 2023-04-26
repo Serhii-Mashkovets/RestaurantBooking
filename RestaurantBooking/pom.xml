@@ -18,69 +18,113 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+        <!-- Ця залежність забезпечує підтримку JDBC для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
+
+        <!--  Ця залежність забезпечує підтримку JPA (Java Persistence API —
+        спецификация API Java EE, предоставляет возможность сохранять в удобном виде Java-объекты в базе данных.)
+        для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Ця залежність надає підтримку RESTful веб-сервісів для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
+
+        <!-- Ця залежність надає підтримку JDBC для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+
+        <!-- Ця залежність надає функції безпеки для вашої Spring Boot програми. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+        <!-- не впевнений, що мені потрібен Thymeleaf в проєкті, але най буде -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
+        <!--  Ця залежність надає веб-підтримку для вашої Spring Boot програми -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Ця залежність надає підтримку сеансів JDBC для Spring Boot додатку -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
+
+        <!-- Ця залежність надає підтримку валідації для Spring Boot додатку. -->
         <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- Ця залежність надає підтримку документації OpenAPI для Spring Boot програми. -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.9</version>
+        </dependency>
+
+        <!-- Це плагін Maven для вимірювання покриття коду за допомогою бібліотеки JaCoCo. -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.8</version>
+        </dependency>
+
+        <!-- Ця залежність надає інструменти для розробки та налагодження Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- Ця залежність надає підтримку підключення до бази даних MySQL для Spring Boot додатку. -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Ця залежність надає анотації для скорочення шаблонного коду у класах Java. -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!--  Ця залежність надає підтримку веб-сервера Tomcat для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!--  Ця залежність надає підтримку для тестування Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Ця залежність надає підтримку для тестування функцій безпеки у Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -102,6 +146,29 @@
                         </exclude>
                     </excludes>
                 </configuration>
+
+
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

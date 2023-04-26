@@ -16,12 +16,16 @@ This is a web application for booking tables at restaurants. It was developed as
 
 The application is written in Java, using the following technologies:
 
-- Spring
+- Java 17
+- Spring, including Spring Boot (Data JPA, Security, Web, Validation)
 - Hibernate
 - Maven
 - MySQL
 - HTML
 - CSS
+- JavaScript
+- JUnit 5 and JaCoCo
+- OpenAPI 3 and SwaggerUI (OpenAPI UI)
 
 ## How can you use the app?
 
@@ -38,6 +42,6 @@ Use the Git version control system.
 
 Since we are using Maven, all necessary dependencies are added in the pom.xml file. However, if you wish to expand or complement the project, you can add dependencies to this file.
 
-To start the application, run the "RestaurantBookingApplication.java" class and go to "localhost:8080/RestaurantBooking_war" in your browser.
+To start the application, run the "RestaurantBookingApplication.java" class or execute `./mvnw spring-boot:run` and open SwaggerUI at http://localhost:8080/swagger-ui.html in your browser.
 
 ![RestaurantBooking](https://nextrestaurants.com/wp-content/uploads/2018/07/Restaurant-Online-Reservation-Systems.png)
