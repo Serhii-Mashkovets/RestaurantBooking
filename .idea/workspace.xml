@@ -4,16 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6f16878-9e79-4792-b549-bd051460a524" name="Changes" comment="" />
+    <list default="true" id="f6f16878-9e79-4792-b549-bd051460a524" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/AdminEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/GuestEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/ReservationEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/RestaurantEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/UserEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/entity/packageEntityInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/AdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/GuestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/RestaurantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/repository/packageRepositoryInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/resources/sql/RestaurantBooking Schema Diagram.mwb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/resources/sql/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/models/Reservation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="aa9b549a-4842-4a39-9535-e00531a2d9ae" value="Blue" />
+    </colors>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -38,25 +65,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finep/OneDrive/Робочий стіл/Restaurant Booking Program&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b783e7faf9ddd8a48629935abec273aa&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "aa9b549a-4842-4a39-9535-e00531a2d9ae",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/finep/OneDrive/Робочий стіл/Restaurant Booking Program/RestaurantBooking/src/main/resources/sql",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "b783e7faf9ddd8a48629935abec273aa",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\finep\OneDrive\Робочий стіл\Restaurant Booking Program\RestaurantBooking\src\main\resources\sql" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="com.reservation.restaurantBooking.entity" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="RestorauntBookingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="RestaurantBooking" />
@@ -85,6 +127,9 @@
       <workItem from="1682430262745" duration="1859000" />
       <workItem from="1682439353316" duration="192000" />
       <workItem from="1682492831896" duration="8250000" />
+      <workItem from="1682504346871" duration="6209000" />
+      <workItem from="1682527636887" duration="1116000" />
+      <workItem from="1682585180803" duration="8679000" />
     </task>
     <servers />
   </component>

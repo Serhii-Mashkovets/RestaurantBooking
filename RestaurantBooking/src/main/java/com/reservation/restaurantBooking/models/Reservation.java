@@ -35,40 +35,25 @@ import java.time.LocalTime;
  */
 public class Reservation {
 
-private Long id;
+    private Long id;
+    private String name;
+    private LocalDate date;
+    private LocalTime time;
+    private Integer numberOfPeople;
+    private boolean confirmed;
+    private Long restaurantId;
 
-private String name;
-
-private LocalDate date;
-
-private LocalTime time;
-
-private Integer numberOfPeople;
-
-private boolean confirmed;
-
-
-    public Reservation(Long id, String name, LocalDate date, LocalTime time, Integer numberOfPeople, boolean confirmed) {
+    public Reservation(Long id, String name, LocalDate date, LocalTime time, Integer numberOfPeople, boolean confirmed, Long restaurantId) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.time = time;
         this.numberOfPeople = numberOfPeople;
         this.confirmed = confirmed;
+        this.restaurantId = restaurantId;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                ", time=" + time +
-                ", numberOfPeople=" + numberOfPeople +
-                ", confirmed=" + confirmed +
-                '}';
-    }
-
+    // getters and setters
     public Long getId() {
         return id;
     }
@@ -116,4 +101,26 @@ private boolean confirmed;
     public void setConfirmed(boolean confirmed) {
         this.confirmed = confirmed;
     }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", numberOfPeople=" + numberOfPeople +
+                ", confirmed=" + confirmed +
+                ", restaurantId=" + restaurantId +
+                '}';
+    }
 }
+
