@@ -6,7 +6,7 @@ This is a web application for booking tables at restaurants. It was developed as
 ## Features
 ✨
 - Admin can add/delete/edit information about restaurants available for booking.
-- User can select a restaurant, date, time of visit, number of people, and request a table reservation.
+- User can select a restaurant, date, time of visit, number of numberOfPeople, and request a table reservation.
 - After selecting a table, the user can confirm the reservation and make an online payment.
 - The user can view the booking history.
 

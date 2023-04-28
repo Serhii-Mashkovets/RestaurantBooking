@@ -17,4 +17,5 @@ public class UserNotFoundException extends BaseException{
     public UserNotFoundException(String message, Throwable cause) {
         super("The user was not found", cause);
     }
+
 }

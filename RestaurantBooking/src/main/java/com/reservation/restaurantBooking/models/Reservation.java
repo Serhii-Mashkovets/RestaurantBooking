@@ -8,13 +8,13 @@ import java.time.LocalTime;
 /**
  * The Reservation class represents a reservation made by a guest or user in the restaurant booking system.
  * It contains information about the reservation such as the name of the person making the reservation,
- * the date and time of the reservation, the number of people, and whether or not the reservation has been confirmed.
+ * the date and time of the reservation, the number of numberOfPeople, and whether or not the reservation has been confirmed.
  * The class has six private fields - id, name, date, time, numberOfPeople, and confirmed - with their respective
  * getter and setter methods. The id field is of type Long and represents the unique identifier of the reservation.
  * The name field is of type String and represents the name of the person making the reservation. The date field
  * is of type LocalDate and represents the date of the reservation. The time field is of type LocalTime and
  * represents the time of the reservation. The numberOfPeople field is of type Integer and represents the
- * number of people in the reservation. The confirmed field is of type boolean and represents whether or not
+ * number of numberOfPeople in the reservation. The confirmed field is of type boolean and represents whether or not
  * the reservation has been confirmed.
  * The class also has a constructor that takes in all of the reservation's fields and sets them to their respective
  * private fields. Additionally, it has a toString method that returns a string representation of the reservation.

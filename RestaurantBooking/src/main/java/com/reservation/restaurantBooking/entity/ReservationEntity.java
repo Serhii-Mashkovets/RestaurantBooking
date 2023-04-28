@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 
@@ -12,7 +14,7 @@ import java.util.Objects;
 /**
  * This class represents a ReservationEntity, which is used to store information
  * about a reservation made by a guest or user in a restaurant.
- * It contains fields for the guest's name, date and time of the reservation, number of people,
+ * It contains fields for the guest's name, date and time of the reservation, number of numberOfPeople,
  * and whether the reservation has been confirmed or not.
  * It also includes a field for the restaurant ID and a One-to-One relationship with the RestaurantEntity class.
  * Example usage:
@@ -36,7 +38,7 @@ public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Long id;
     @Basic
     @Column(name = "name")
     private String name;
@@ -44,27 +46,27 @@ public class ReservationEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Basic
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
     @DateTimeFormat(pattern = "HH:mm")
     @Basic
     @Column(name = "time")
-    private Time time;
+    private LocalTime time;
     @Basic
     @Column(name = "numberOfPeople")
     private int numberOfPeople;
     @Basic
     @Column(name = "confirmed")
-    private Byte confirmed;
+    private Boolean confirmed;
     @Basic
     @Column(name = "restaurantId")
-    private int restaurantId;
+    private Long restaurantId;
     @OneToOne
     @JoinColumn(name = "restaurantId", referencedColumnName = "id", nullable = false)
     private RestaurantEntity restaurantByRestaurantId;
 
 
-    public ReservationEntity(int id, String name, Date date, Time time, int numberOfPeople, Byte confirmed, int restaurantId) {
+    public ReservationEntity(Long id, String name, LocalDate date, LocalTime time, int numberOfPeople, Boolean confirmed, Long restaurantId) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -78,11 +80,11 @@ public class ReservationEntity {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,19 +96,19 @@ public class ReservationEntity {
         this.name = name;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -118,19 +120,19 @@ public class ReservationEntity {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public Byte getConfirmed() {
+    public Boolean getConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(Byte confirmed) {
+    public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
     }
 
-    public int getRestaurantId() {
+    public Long getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(int restaurantId) {
+    public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
     }
 

@@ -10,7 +10,7 @@ package com.reservation.restaurantBooking.models;
  * reservations, restaurants, and users.
  * The classes provide easy data access and management for various analytics and reporting purposes.
  * The Reservation class has additional fields for managing reservation information such as name, date, time,
- * number of people, and confirmation status.
+ * number of numberOfPeople, and confirmation status.
  * The CuisineType enum is used to specify the type of cuisine offered by a restaurant,
  * and the Admin class contains ID and password information for authentication purposes.
  *
