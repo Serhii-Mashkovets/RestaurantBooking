@@ -45,7 +45,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public ReservationInfo createReservation(ReservationRequest request) {
-        log.info("Creating new reservation: {}", request);
+        log.debug("Creating new reservation: {}", request);
         reservationValidator.validateReservationRequest(request);
 
         ReservationEntity entity = new ReservationEntity(request.id(), request.name(), request.date(), request.time(),
@@ -103,7 +103,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Transactional
     public void deleteById(Long reservationId) {
         ReservationEntity reservation = getOne(reservationId);
-        log.info("Deleting reservation: {}", reservation);
+        log.debug("Deleting reservation: {}", reservation);
         reservationRepository.delete(reservation);
     }
 

@@ -6,6 +6,7 @@ import com.reservation.restaurantBooking.repository.AdminRepository;
 import com.reservation.restaurantBooking.recordModels.AdminRecord;
 import com.reservation.restaurantBooking.services.InterfacesForServices.AdminService;
 import com.reservation.restaurantBooking.validation.AdminValidator;
+import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,9 @@ public abstract class AdminServiceImpl implements AdminService {
      * @throws AdminNotFoundException if no admin with the given ID is found
      */
     @Override
+    @Transactional(readOnly = true)
     public AdminRecord getAdminById(Long id) throws AdminNotFoundException {
-        log.info("Getting the admin by id");
+        log.debug("Getting the admin by id");
         AdminEntity adminEntity = adminRepository.findById(id)
                 .orElseThrow(() -> new AdminNotFoundException( String.valueOf(id)));
         return new AdminRecord((long) adminEntity.getId(), adminEntity.getPassword());
@@ -64,8 +66,9 @@ public abstract class AdminServiceImpl implements AdminService {
      * @return a list of all admin records
      */
     @Override
+    @Transactional(readOnly = true)
     public List<AdminRecord> getAllAdmins() {
-        log.info("Getting all admins");
+        log.debug("Getting all admins");
         return adminRepository.findAll().stream()
                 .map(adminEntity -> new AdminRecord((long) adminEntity.getId(), adminEntity.getPassword()))
                 .collect(Collectors.toList());
@@ -79,8 +82,9 @@ public abstract class AdminServiceImpl implements AdminService {
      * @return the newly created admin record
      */
     @Override
+    @Transactional
     public AdminRecord createAdmin(AdminRecord adminRecord) {
-        log.info("Creating new admin");
+        log.debug("Creating new admin");
 
         adminValidator.validateAdminRequest(adminRecord);
         AdminEntity adminEntity = new AdminEntity();
@@ -99,8 +103,9 @@ public abstract class AdminServiceImpl implements AdminService {
      * @throws AdminNotFoundException if no admin with the given ID is found
      */
     @Override
+    @Transactional
     public AdminRecord updateAdmin(Long id, AdminRecord adminRecord) throws AdminNotFoundException {
-        log.info("Updating the admin");
+        log.debug("Updating the admin");
         adminValidator.validateAdminRequest(adminRecord);
         AdminEntity adminEntity = adminRepository.findById(id)
                 .orElseThrow(() -> new AdminNotFoundException( String.valueOf(id)));
@@ -115,8 +120,9 @@ public abstract class AdminServiceImpl implements AdminService {
      * @param id admin identifier
      */
     @Override
+    @Transactional
     public void deleteAdmin(Long id) {
-        log.info("Deleting the admin by id");
+        log.debug("Deleting the admin by id");
         adminRepository.deleteById(id);
     }
 }

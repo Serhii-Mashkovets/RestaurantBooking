@@ -29,7 +29,7 @@ public class ReservationValidator {
      * @param request request to validate
      */
     public void validateReservationRequest(ReservationRequest request) {
-        log.info("Getting started in a class ReservationValidator in a method validateReservationRequest");
+        log.debug("Getting started in a class ReservationValidator in a method validateReservationRequest");
         // Creating reservation in the past is not allowed:
         if (request.date() == null || request.date().isBefore(LocalDate.now())) {
             throw new InvalidReservationRequestException("date", String.valueOf(request.date()));
@@ -52,7 +52,7 @@ public class ReservationValidator {
      * @param edited      the existing reservation to update
      */
     public void validateUpdateRequest(UpdateReservationRequest editRequest, ReservationInfo edited) {
-        log.info("Getting started in a class ReservationValidator in a method validateUpdateRequest");
+        log.debug("Getting started in a class ReservationValidator in a method validateUpdateRequest");
         if (editRequest == null || edited == null) {
             throw new InvalidReservationRequestException("update request", "either update request or reservation info is null");
         }

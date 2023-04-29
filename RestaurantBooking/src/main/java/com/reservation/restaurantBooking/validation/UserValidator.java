@@ -22,7 +22,7 @@ public class UserValidator {
      * @throws InvalidUserRequestException if the record is invalid
      */
     public void validateUserRecord(UserRecord user) throws InvalidUserRequestException {
-        log.info("Validating user record...");
+        log.debug("Validating user record...");
 
         if (user == null) {
             throw new InvalidUserRequestException("User record cannot be null.", "null");
@@ -40,6 +40,6 @@ public class UserValidator {
             throw new InvalidUserRequestException("User password cannot be null or blank.", user.password());
         }
 
-        log.info("User record is valid.");
+        log.debug("User record is valid.");
     }
 }

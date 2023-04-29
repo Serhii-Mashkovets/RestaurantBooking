@@ -1,6 +1,7 @@
 package com.reservation.restaurantBooking.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
@@ -32,6 +33,8 @@ public class RestaurantEntity {
     @Id
     @Column(name = "id")
     private int id;
+
+    @NotBlank(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "name")
     private String name;

@@ -7,6 +7,7 @@ import com.reservation.restaurantBooking.recordModels.RestaurantRecord;
 import com.reservation.restaurantBooking.repository.RestaurantRepository;
 import com.reservation.restaurantBooking.services.InterfacesForServices.RestaurantService;
 import com.reservation.restaurantBooking.validation.RestaurantValidator;
+import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,9 @@ public class RestaurantServiceImpl implements RestaurantService {
      @throws RestaurantNotFoundException if no restaurant entity exists with the specified id
      */
     @Override
+    @Transactional(readOnly = true)
     public RestaurantRecord getRestaurantById(Long id) throws RestaurantNotFoundException {
-        log.info("Getting the restaurant by id");
+        log.debug("Getting the restaurant by id");
         RestaurantEntity restaurantEntity = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RestaurantNotFoundException("RestaurantEntity", "id", String.valueOf(id)));
         return new RestaurantRecord((long) restaurantEntity.getId(), restaurantEntity.getName(), (CuisineType) restaurantEntity.getCuisineType());
@@ -62,8 +64,9 @@ public class RestaurantServiceImpl implements RestaurantService {
      @return a list of all restaurant records
      */
     @Override
+    @Transactional(readOnly = true)
     public List<RestaurantRecord> getAllRestaurants() {
-        log.info("Getting all restaurants");
+        log.debug("Getting all restaurants");
         return restaurantRepository.findAll().stream()
                 .map(restaurantEntity -> new RestaurantRecord((long) restaurantEntity.getId(), restaurantEntity.getName(), (CuisineType) restaurantEntity.getCuisineType()))
                 .collect(Collectors.toList());
@@ -79,8 +82,9 @@ public class RestaurantServiceImpl implements RestaurantService {
      @return the created restaurant record
      */
     @Override
+    @Transactional
     public RestaurantRecord createRestaurant(RestaurantRecord restaurantRecord) {
-        log.info("Creating new restaurant");
+        log.debug("Creating new restaurant");
 
         restaurantValidator.validateRestaurantRecord(restaurantRecord);
         RestaurantEntity restaurantEntity = new RestaurantEntity();
@@ -102,8 +106,9 @@ public class RestaurantServiceImpl implements RestaurantService {
      @throws RestaurantNotFoundException if no restaurant entity exists with the specified id
      */
     @Override
+    @Transactional
     public RestaurantRecord updateRestaurant(Long id, RestaurantRecord restaurantRecord) throws RestaurantNotFoundException {
-        log.info("Updating the restaurant");
+        log.debug("Updating the restaurant");
         restaurantValidator.validateRestaurantRecord(restaurantRecord);
         RestaurantEntity restaurantEntity = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RestaurantNotFoundException("RestaurantEntity", "id", String.valueOf(id)));
@@ -121,8 +126,9 @@ public class RestaurantServiceImpl implements RestaurantService {
      * @param id the id of the restaurant to delete
      */
     @Override
+    @Transactional
     public void deleteRestaurant(Long id) {
-        log.info("Deleting the restaurant by id: {}", id);
+        log.debug("Deleting the restaurant by id: {}", id);
         restaurantRepository.deleteById(id);
     }
 

@@ -21,7 +21,7 @@ public class AdminValidator {
      * @param request admin request to validate
      */
     public void validateAdminRequest(AdminRecord request) {
-        log.info("Getting started in a class AdminValidator in a method validateAdminRequest");
+        log.debug("Getting started in a class AdminValidator in a method validateAdminRequest");
 
         if (request.id() == null || request.id() <= 0) {
             throw new InvalidAdminRequestException("id", String.valueOf(request.id()));

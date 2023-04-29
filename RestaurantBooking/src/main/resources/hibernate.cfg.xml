@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/restaurantbooking</property>
+        <property name="hibernate.connection.username">Serhii Mashkovets</property>
+        <property name="hibernate.connection.password">Mashkovets</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
+
+
+        <mapping class="com.reservation.restaurantBooking.models.Admin"/>
+        <mapping class="com.reservation.restaurantBooking.models.Guest"/>
+        <mapping class="com.reservation.restaurantBooking.models.Reservation"/>
+        <mapping class="com.reservation.restaurantBooking.models.Restaurant"/>
+        <mapping class="com.reservation.restaurantBooking.models.User"/>
+
+        <mapping class="com.reservation.restaurantBooking.recordModels.AdminRecord"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.GuestRecord"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.ReservationInfo"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.ReservationQuery"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.ReservationRequest"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.RestaurantRecord"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.UpdateReservationRequest"/>
+        <mapping class="com.reservation.restaurantBooking.recordModels.UserRecord"/>
+
+        <mapping class="com.reservation.restaurantBooking.entity.AdminEntity"/>
+        <mapping class="com.reservation.restaurantBooking.entity.GuestEntity"/>
+        <mapping class="com.reservation.restaurantBooking.entity.ReservationEntity"/>
+        <mapping class="com.reservation.restaurantBooking.entity.RestaurantEntity"/>
+        <mapping class="com.reservation.restaurantBooking.entity.UserEntity"/>
+
+
+
+
+    </session-factory>
+
+</hibernate-configuration>

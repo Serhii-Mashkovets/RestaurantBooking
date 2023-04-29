@@ -1,6 +1,8 @@
 package com.reservation.restaurantBooking.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
@@ -39,6 +41,8 @@ public class ReservationEntity {
     @Id
     @Column(name = "id")
     private Long id;
+
+    @NotBlank(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "name")
     private String name;
@@ -52,12 +56,16 @@ public class ReservationEntity {
     @Basic
     @Column(name = "time")
     private LocalTime time;
+
+    @NotNull(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "numberOfPeople")
     private int numberOfPeople;
     @Basic
     @Column(name = "confirmed")
     private Boolean confirmed;
+
+    @NotNull(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "restaurantId")
     private Long restaurantId;

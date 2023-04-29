@@ -6,6 +6,7 @@ import com.reservation.restaurantBooking.repository.GuestRepository;
 import com.reservation.restaurantBooking.recordModels.GuestRecord;
 import com.reservation.restaurantBooking.services.InterfacesForServices.GuestService;
 import com.reservation.restaurantBooking.validation.GuestValidator;
+import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,9 @@ public abstract class GuestServiceImpl implements GuestService {
      @throws GuestNotFoundException if no guest entity exists with the specified id
      */
     @Override
+    @Transactional(readOnly = true)
     public GuestRecord getGuestById(Long id) throws GuestNotFoundException {
-        log.info("Getting the guest by id");
+        log.debug("Getting the guest by id");
         GuestEntity guestEntity = guestRepository.findById(id)
                 .orElseThrow(() -> new GuestNotFoundException("GuestEntity", "id", String.valueOf(id)));
         return new GuestRecord((long) guestEntity.getId());
@@ -59,8 +61,9 @@ public abstract class GuestServiceImpl implements GuestService {
      @return a list of all guest records
      */
     @Override
+    @Transactional(readOnly = true)
     public List<GuestRecord> getAllGuests() {
-        log.info("Getting all guests");
+        log.debug("Getting all guests");
         return guestRepository.findAll().stream()
                 .map(guestEntity -> new GuestRecord((long) guestEntity.getId()))
                 .collect(Collectors.toList());
@@ -74,8 +77,9 @@ public abstract class GuestServiceImpl implements GuestService {
      @return the created guest record
      */
     @Override
+    @Transactional
     public GuestRecord createGuest(GuestRecord guestRecord) {
-        log.info("Creating new guest");
+        log.debug("Creating new guest");
 
         guestValidator.validateGuestRecord(guestRecord);
         GuestEntity guestEntity = new GuestEntity();
@@ -93,8 +97,9 @@ public abstract class GuestServiceImpl implements GuestService {
      @throws GuestNotFoundException if no guest entity exists with the specified id
      */
     @Override
+    @Transactional
     public GuestRecord updateGuest(Long id, GuestRecord guestRecord) throws GuestNotFoundException {
-        log.info("Updating the guest");
+        log.debug("Updating the guest");
         guestValidator.validateGuestRecord(guestRecord);
         GuestEntity guestEntity = guestRepository.findById(id)
                 .orElseThrow(() -> new GuestNotFoundException("GuestEntity", "id", String.valueOf(id)));
@@ -110,8 +115,9 @@ public abstract class GuestServiceImpl implements GuestService {
      @param id the id of the guest to delete
      */
     @Override
+    @Transactional
     public void deleteGuest(Long id) {
-        log.info("Deleting the guest by id");
+        log.debug("Deleting the guest by id");
         guestRepository.deleteById(id);
     }
 }

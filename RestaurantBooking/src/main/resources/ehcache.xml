@@ -1,0 +1,28 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+
+    <defaultCache maxElementsInMemory="10000" eternal="false"
+                  timeToIdleSeconds="120" timeToLiveSeconds="120"/>
+
+    <cache name="com.reservation.restaurantBooking.entity.AdminEntity"
+           maxElementsInMemory="1000" eternal="false"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"/>
+
+    <cache name="com.reservation.restaurantBooking.entity.GuestEntity"
+           maxElementsInMemory="1000" eternal="false"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"/>
+
+    <cache name="com.reservation.restaurantBooking.entity.ReservationEntity"
+           maxElementsInMemory="1000" eternal="false"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"/>
+
+    <cache name="com.reservation.restaurantBooking.entity.RestaurantEntity"
+           maxElementsInMemory="1000" eternal="false"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"/>
+
+    <cache name="com.reservation.restaurantBooking.entity.UserEntity"
+           maxElementsInMemory="1000" eternal="false"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"/>
+
+</ehcache>

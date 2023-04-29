@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,8 +49,9 @@ public abstract class UserServiceImpl implements UserService {
      * @throws UserNotFoundException if no user entity exists with the specified id
      */
     @Override
+    @Transactional(readOnly = true)
     public UserRecord getUserById(Long id) throws UserNotFoundException {
-        log.info("Getting the user by id");
+        log.debug("Getting the user by id");
         UserEntity userEntity = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(String.valueOf(id)));
         return new UserRecord((long) userEntity.getId(), userEntity.getName(), userEntity.getEmail(), userEntity.getPassword());
@@ -61,8 +63,9 @@ public abstract class UserServiceImpl implements UserService {
      * @return a list of all user records
      */
     @Override
+    @Transactional(readOnly = true)
     public List<UserRecord> getAllUsers() {
-        log.info("Getting all users");
+        log.debug("Getting all users");
         return userRepository.findAll().stream()
                 .map(userEntity -> new UserRecord((long) userEntity.getId(), userEntity.getName(), userEntity.getEmail(), userEntity.getPassword()))
                 .collect(Collectors.toList());
@@ -75,8 +78,9 @@ public abstract class UserServiceImpl implements UserService {
      * @return the created user record
      */
     @Override
+    @Transactional
     public UserRecord createUser(UserRecord userRecord) {
-        log.info("Creating new user");
+        log.debug("Creating new user");
 
         userValidator.validateUserRecord(userRecord);
         UserEntity userEntity = new UserEntity();
@@ -97,8 +101,9 @@ public abstract class UserServiceImpl implements UserService {
      * @throws UserNotFoundException if no user entity exists with the specified id
      */
     @Override
+    @Transactional
     public UserRecord updateUser(Long id, UserRecord userRecord) throws UserNotFoundException {
-        log.info("Updating the user");
+        log.debug("Updating the user");
         userValidator.validateUserRecord(userRecord);
         UserEntity userEntity = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(String.valueOf(id)));
@@ -116,8 +121,9 @@ public abstract class UserServiceImpl implements UserService {
      * @param id the id of the user to delete
      */
     @Override
+    @Transactional
     public void deleteUser(Long id) {
-        log.info("Deleting the guest by id");
+        log.debug("Deleting the guest by id");
         userRepository.deleteById(id);
     }
 
@@ -127,9 +133,10 @@ public abstract class UserServiceImpl implements UserService {
      * @return the user found by his email
      */
     @Override
+    @Transactional(readOnly = true)
     public UserRecord findByEmail(String email) {
 
-        log.info("Finding the guest by email");
+        log.debug("Finding the guest by email");
         UserEntity userEntity = userRepository.findByEmail(email);
 
         if (userEntity == null) {

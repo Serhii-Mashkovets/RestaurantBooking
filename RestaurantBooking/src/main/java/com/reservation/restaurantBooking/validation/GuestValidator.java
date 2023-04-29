@@ -20,7 +20,7 @@ public class GuestValidator {
      * @param guestRecord guest record to validate
      */
     public void validateGuestRecord(GuestRecord guestRecord) {
-        log.info("Validating guest record with id {}", guestRecord.id());
+        log.debug("Validating guest record with id {}", guestRecord.id());
 
         if (guestRecord.id() == null || guestRecord.id() <= 0) {
             throw new InvalidGuestRequestException("id", String.valueOf(guestRecord.id()));

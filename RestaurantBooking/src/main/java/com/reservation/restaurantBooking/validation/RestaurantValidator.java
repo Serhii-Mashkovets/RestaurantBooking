@@ -25,7 +25,7 @@ public class RestaurantValidator {
      @throws InvalidRestaurantRecordException if the record is invalid
      */
     public void validateRestaurantRecord(RestaurantRecord restaurant) throws InvalidRestaurantRecordException {
-        log.info("Validating restaurant record...");
+        log.debug("Validating restaurant record...");
 
         if (restaurant == null) {
             throw new InvalidRestaurantRecordException("restaurant", "null");
@@ -39,6 +39,6 @@ public class RestaurantValidator {
             throw new InvalidRestaurantRecordException("cuisineType", "null");
         }
 
-        log.info("Restaurant record is valid.");
+        log.debug("Restaurant record is valid.");
     }
 }
