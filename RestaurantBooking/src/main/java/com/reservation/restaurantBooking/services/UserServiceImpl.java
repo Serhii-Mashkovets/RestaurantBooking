@@ -1,8 +1,11 @@
 package com.reservation.restaurantBooking.services;
 
+import com.reservation.restaurantBooking.entity.ReservationEntity;
 import com.reservation.restaurantBooking.entity.UserEntity;
 import com.reservation.restaurantBooking.exceptions.UserNotFoundException;
+import com.reservation.restaurantBooking.recordModels.ReservationInfo;
 import com.reservation.restaurantBooking.recordModels.UserRecord;
+import com.reservation.restaurantBooking.repository.ReservationRepository;
 import com.reservation.restaurantBooking.repository.UserRepository;
 import com.reservation.restaurantBooking.services.InterfacesForServices.UserService;
 import com.reservation.restaurantBooking.validation.UserValidator;
@@ -12,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,16 +35,20 @@ public abstract class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserValidator userValidator;
 
+    private final ReservationRepository reservationRepository;
+
     /**
      * Constructor to inject dependencies
      *
-     * @param userRepository the repository for user entities
-     * @param userValidator  the validator for user records
+     * @param userRepository        the repository for user entities
+     * @param userValidator         the validator for user records
+     * @param reservationRepository  the repository for reservation entities
      */
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserValidator userValidator) {
+    public UserServiceImpl(UserRepository userRepository, UserValidator userValidator, ReservationRepository reservationRepository) {
         this.userRepository = userRepository;
         this.userValidator = userValidator;
+        this.reservationRepository = reservationRepository;
     }
 
     /**
@@ -145,5 +155,43 @@ public abstract class UserServiceImpl implements UserService {
 
         return new UserRecord((long) userEntity.getId(), userEntity.getName(), userEntity.getEmail(), userEntity.getPassword());
     }
+
+
+    /**
+
+     This method retrieves a list of ReservationInfo objects that belong to a user with the specified userId.
+     @param userId the id of the user whose reservations to retrieve
+     @return a list of ReservationInfo objects representing the reservations of the user
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public List<ReservationInfo> getAllReservationsByUserId(Long userId) {
+        List<ReservationEntity> reservationEntities = reservationRepository.findByUserId(userId);
+        return reservationEntities.stream()
+                .map(this::mapReservationEntityToReservationRecord)
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+
+     This method maps a ReservationEntity object to a ReservationInfo object.
+
+     @param reservationEntity the ReservationEntity to map to a ReservationInfo object
+
+     @return a ReservationInfo object representing the specified ReservationEntity object
+     */
+    private ReservationInfo mapReservationEntityToReservationRecord(ReservationEntity reservationEntity) {
+        Long id = (long) reservationEntity.getId();
+        String name = reservationEntity.getName();
+        LocalDate date = reservationEntity.getDate().toLocalDate();
+        LocalTime time = reservationEntity.getTime().toLocalTime().truncatedTo(ChronoUnit.MINUTES);
+        Integer numberOfPeople = reservationEntity.getNumberOfPeople();
+        Boolean confirmed = reservationEntity.getConfirmed() != null ? reservationEntity.getConfirmed() == 1 : null;
+        Long restaurantId = (long) reservationEntity.getRestaurantId();
+
+        return new ReservationInfo(id, name, date, time, numberOfPeople, confirmed, restaurantId);
+    }
+
 
 }

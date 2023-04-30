@@ -3,14 +3,11 @@ package com.reservation.restaurantBooking.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Collection;
 import java.util.Objects;
-
 
 
 /**
@@ -40,59 +37,42 @@ public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotBlank(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "name")
     private String name;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Basic
     @Column(name = "date")
-    private LocalDate date;
-
-    @DateTimeFormat(pattern = "HH:mm")
+    private Date date;
     @Basic
     @Column(name = "time")
-    private LocalTime time;
-
-    @NotNull(message = "Must be more than 2 characters")
+    private Time time;
     @Basic
     @Column(name = "numberOfPeople")
     private int numberOfPeople;
     @Basic
     @Column(name = "confirmed")
-    private Boolean confirmed;
+    private Byte confirmed;
 
     @NotNull(message = "Must be more than 2 characters")
     @Basic
     @Column(name = "restaurantId")
-    private Long restaurantId;
-    @OneToOne
+    private int restaurantId;
+    @OneToMany(mappedBy = "reservationByReservationId")
+    private Collection<GuestreservationsEntity> guestreservationsById;
+    @ManyToOne
     @JoinColumn(name = "restaurantId", referencedColumnName = "id", nullable = false)
     private RestaurantEntity restaurantByRestaurantId;
+    @OneToMany(mappedBy = "reservationByReservationId")
+    private Collection<UserreservationsEntity> userreservationsById;
 
-
-    public ReservationEntity(Long id, String name, LocalDate date, LocalTime time, int numberOfPeople, Boolean confirmed, Long restaurantId) {
-        this.id = id;
-        this.name = name;
-        this.date = date;
-        this.time = time;
-        this.numberOfPeople = numberOfPeople;
-        this.confirmed = confirmed;
-        this.restaurantId = restaurantId;
-    }
-
-    public ReservationEntity() {
-
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -104,19 +84,19 @@ public class ReservationEntity {
         this.name = name;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -128,19 +108,19 @@ public class ReservationEntity {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public Boolean getConfirmed() {
+    public Byte getConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(Boolean confirmed) {
+    public void setConfirmed(Byte confirmed) {
         this.confirmed = confirmed;
     }
 
-    public Long getRestaurantId() {
+    public int getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Long restaurantId) {
+    public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
     }
 
@@ -157,11 +137,27 @@ public class ReservationEntity {
         return Objects.hash(id, name, date, time, numberOfPeople, confirmed, restaurantId);
     }
 
+    public Collection<GuestreservationsEntity> getGuestreservationsById() {
+        return guestreservationsById;
+    }
+
+    public void setGuestreservationsById(Collection<GuestreservationsEntity> guestreservationsById) {
+        this.guestreservationsById = guestreservationsById;
+    }
+
     public RestaurantEntity getRestaurantByRestaurantId() {
         return restaurantByRestaurantId;
     }
 
     public void setRestaurantByRestaurantId(RestaurantEntity restaurantByRestaurantId) {
         this.restaurantByRestaurantId = restaurantByRestaurantId;
+    }
+
+    public Collection<UserreservationsEntity> getUserreservationsById() {
+        return userreservationsById;
+    }
+
+    public void setUserreservationsById(Collection<UserreservationsEntity> userreservationsById) {
+        this.userreservationsById = userreservationsById;
     }
 }

@@ -2,8 +2,8 @@ package com.reservation.restaurantBooking.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
-
 
 
 /**
@@ -31,6 +31,8 @@ public class GuestEntity {
     @Id
     @Column(name = "id")
     private int id;
+    @OneToMany(mappedBy = "guestByGuestId")
+    private List<GuestreservationsEntity> guestreservationsById;
 
     public int getId() {
         return id;
@@ -51,5 +53,13 @@ public class GuestEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public List<GuestreservationsEntity> getGuestreservationsById() {
+        return guestreservationsById;
+    }
+
+    public void setGuestreservationsById(List<GuestreservationsEntity> guestreservationsById) {
+        this.guestreservationsById = guestreservationsById;
     }
 }

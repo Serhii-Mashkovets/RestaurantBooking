@@ -8,5 +8,16 @@
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/restaurantbooking?user=Serhii Mashkovets</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="7d48caf8-4d03-4d70-862b-6dd484cae3c3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/finep/OneDrive/Робочий стіл/Restaurant Booking Program/RestaurantBooking/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/restaurantbooking</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -3,8 +3,8 @@ package com.reservation.restaurantBooking.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
 import java.util.Objects;
-
 
 
 /**
@@ -52,6 +52,8 @@ public class UserEntity {
     @Basic
     @Column(name = "password")
     private String password;
+    @OneToMany(mappedBy = "userByUserId")
+    private List<UserreservationsEntity> userreservationsById;
 
     public int getId() {
         return id;
@@ -96,5 +98,13 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, email, password);
+    }
+
+    public List<UserreservationsEntity> getUserreservationsById() {
+        return userreservationsById;
+    }
+
+    public void setUserreservationsById(List<UserreservationsEntity> userreservationsById) {
+        this.userreservationsById = userreservationsById;
     }
 }

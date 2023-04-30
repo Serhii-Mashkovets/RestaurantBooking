@@ -1,5 +1,6 @@
 package com.reservation.restaurantBooking.services.InterfacesForServices;
 
+import com.reservation.restaurantBooking.recordModels.ReservationInfo;
 import com.reservation.restaurantBooking.recordModels.UserRecord;
 
 import java.util.List;
@@ -51,4 +52,14 @@ public interface UserService extends ReservationService {
      * @return user found
      */
     UserRecord findByEmail(String email);
+
+
+    /**
+     * Retrieves all reservations for a specific user.
+     *
+     * @param userId user identifier
+     * @return list of all reservations for the specified user
+     */
+    List<ReservationInfo> getAllReservationsByUserId(Long userId);
 }
+

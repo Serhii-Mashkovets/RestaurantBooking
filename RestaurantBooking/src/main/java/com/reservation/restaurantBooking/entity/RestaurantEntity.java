@@ -3,8 +3,8 @@ package com.reservation.restaurantBooking.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Collection;
 import java.util.Objects;
-
 
 
 /**
@@ -41,8 +41,8 @@ public class RestaurantEntity {
     @Basic
     @Column(name = "cuisineType")
     private Object cuisineType;
-    @OneToOne(mappedBy = "restaurantByRestaurantId")
-    private ReservationEntity reservationsById;
+    @OneToMany(mappedBy = "restaurantByRestaurantId")
+    private Collection<ReservationEntity> reservationsById;
 
     public int getId() {
         return id;
@@ -81,11 +81,11 @@ public class RestaurantEntity {
         return Objects.hash(id, name, cuisineType);
     }
 
-    public ReservationEntity getReservationsById() {
+    public Collection<ReservationEntity> getReservationsById() {
         return reservationsById;
     }
 
-    public void setReservationsById(ReservationEntity reservationsById) {
+    public void setReservationsById(Collection<ReservationEntity> reservationsById) {
         this.reservationsById = reservationsById;
     }
 }

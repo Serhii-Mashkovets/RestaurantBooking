@@ -38,3 +38,21 @@ CREATE TABLE reservation (
                              restaurantId INT NOT NULL,
                              FOREIGN KEY (restaurantId) REFERENCES restaurant(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE guestreservations (
+                                   guestID INT NOT NULL,
+                                   reservationID INT NOT NULL,
+                                   PRIMARY KEY(guestID),
+                                   FOREIGN KEY(guestID) REFERENCES guest(id),
+                                   FOREIGN KEY(reservationID) REFERENCES reservation(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE userreservations (
+                                  userID INT NOT NULL,
+                                  reservationID INT NOT NULL,
+                                  PRIMARY KEY(userID),
+                                  FOREIGN KEY(userID) REFERENCES user(id),
+                                  FOREIGN KEY(reservationID) REFERENCES reservation(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
