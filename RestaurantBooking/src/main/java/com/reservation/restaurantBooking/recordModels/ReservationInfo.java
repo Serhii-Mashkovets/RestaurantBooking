@@ -18,16 +18,16 @@ import java.time.temporal.ChronoUnit;
  * @param restaurantId unique restaurant identifier
  */
 public record ReservationInfo(
-        Long id,
+        int id,
         String name,
         LocalDate date,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm") LocalTime time,
         Integer numberOfPeople,
         Boolean confirmed,
-        Long restaurantId
+        int restaurantId
 ) {
-    public ReservationInfo(Long id, String name, LocalDate date, LocalTime time, Integer numberOfPeople, Boolean confirmed,
-                           Long restaurantId) {
+    public ReservationInfo(int id, String name, LocalDate date, LocalTime time, Integer numberOfPeople, Boolean confirmed,
+                           int restaurantId) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -35,6 +35,10 @@ public record ReservationInfo(
         this.numberOfPeople = numberOfPeople;
         this.confirmed = confirmed;
         this.restaurantId = restaurantId;
+    }
+
+    public int getId() {
+        return  id;
     }
 }
 

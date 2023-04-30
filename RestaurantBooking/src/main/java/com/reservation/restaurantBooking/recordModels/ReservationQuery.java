@@ -15,11 +15,11 @@ public record ReservationQuery(
         LocalDate date,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm") LocalTime time,
 
-        int numberOfPeople,
+       Integer numberOfPeople,
         Boolean confirmed,
         Long restaurantId
 ) {
-    public ReservationQuery(Long id, String name, LocalDate date, LocalTime time,int numberOfPeople,
+    public ReservationQuery(Long id, String name, LocalDate date, LocalTime time,Integer numberOfPeople,
                             Boolean confirmed, Long restaurantId) {
         this.id = id;
         this.name = name;

@@ -182,13 +182,13 @@ public abstract class UserServiceImpl implements UserService {
      @return a ReservationInfo object representing the specified ReservationEntity object
      */
     private ReservationInfo mapReservationEntityToReservationRecord(ReservationEntity reservationEntity) {
-        Long id = (long) reservationEntity.getId();
+        int id = reservationEntity.getId();
         String name = reservationEntity.getName();
-        LocalDate date = reservationEntity.getDate().toLocalDate();
-        LocalTime time = reservationEntity.getTime().toLocalTime().truncatedTo(ChronoUnit.MINUTES);
+        LocalDate date = reservationEntity.getDate();
+        LocalTime time = reservationEntity.getTime().truncatedTo(ChronoUnit.MINUTES);
         Integer numberOfPeople = reservationEntity.getNumberOfPeople();
-        Boolean confirmed = reservationEntity.getConfirmed() != null ? reservationEntity.getConfirmed() == 1 : null;
-        Long restaurantId = (long) reservationEntity.getRestaurantId();
+        Boolean confirmed = reservationEntity.getConfirmed();
+        int restaurantId = reservationEntity.getRestaurantId();
 
         return new ReservationInfo(id, name, date, time, numberOfPeople, confirmed, restaurantId);
     }

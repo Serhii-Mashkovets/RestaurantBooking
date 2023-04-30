@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -45,16 +47,16 @@ public class ReservationEntity {
     private String name;
     @Basic
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
     @Basic
     @Column(name = "time")
-    private Time time;
+    private LocalTime time;
     @Basic
     @Column(name = "numberOfPeople")
     private int numberOfPeople;
     @Basic
     @Column(name = "confirmed")
-    private Byte confirmed;
+    private Boolean confirmed;
 
     @NotNull(message = "Must be more than 2 characters")
     @Basic
@@ -67,6 +69,7 @@ public class ReservationEntity {
     private RestaurantEntity restaurantByRestaurantId;
     @OneToMany(mappedBy = "reservationByReservationId")
     private Collection<UserreservationsEntity> userreservationsById;
+
 
     public int getId() {
         return id;
@@ -84,19 +87,19 @@ public class ReservationEntity {
         this.name = name;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -108,11 +111,11 @@ public class ReservationEntity {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public Byte getConfirmed() {
+    public Boolean getConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(Byte confirmed) {
+    public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
     }
 

@@ -48,8 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
         log.debug("Creating new reservation: {}", request);
         reservationValidator.validateReservationRequest(request);
 
-        ReservationEntity entity = new ReservationEntity(request.id(), request.name(), request.date(), request.time(),
-                request.numberOfPeople(), request.confirmed(), request.restaurantId());
+        ReservationEntity entity = new ReservationEntity();
 
         ReservationEntity reservation = reservationRepository.save(entity);
         return toReservationInfo(reservation);
@@ -70,8 +69,7 @@ public class ReservationServiceImpl implements ReservationService {
         // Specification and CriteriaBuilder (e.g. when entities grow complex)
         // or just plain SQL @Query methods in repository interfaces
 
-        ReservationEntity probe = new ReservationEntity(query.id(), query.name(), query.date(), query.time(), query.numberOfPeople(),
-                query.confirmed(), query.restaurantId());
+        ReservationEntity probe = new ReservationEntity();
 
         ExampleMatcher matcher = ExampleMatcher.matchingAll()
                 .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
@@ -131,8 +129,6 @@ public class ReservationServiceImpl implements ReservationService {
         updateEntityField(updateReq.date(), reservation.getDate(), reservation::setDate);
         updateEntityField(updateReq.time(), reservation.getTime(), reservation::setTime);
         updateEntityField(updateReq.numberOfPeople(), reservation.getNumberOfPeople(), reservation::setNumberOfPeople);
-        updateEntityField(updateReq.confirmed(), reservation.getConfirmed(), reservation::setConfirmed);
-        updateEntityField(updateReq.restaurantId(), reservation.getRestaurantId(), reservation::setRestaurantId);
 
         ReservationEntity edited = reservationRepository.save(reservation);
         log.info("Reservation '{}' updated with '{}'", reservation, updateReq);
