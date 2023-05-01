@@ -3,6 +3,7 @@ package com.reservation.restaurantBooking.controllers;
 
 import com.reservation.restaurantBooking.exceptions.*;
 import com.reservation.restaurantBooking.recordModels.*;
+import com.reservation.restaurantBooking.services.*;
 import com.reservation.restaurantBooking.services.InterfacesForServices.*;
 import com.reservation.restaurantBooking.validation.AdminValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
-    private final AdminService adminService;
+    private final AdminServiceImpl adminService;
     private final AdminValidator adminValidator;
-    private final GuestService guestService;
+    private final GuestServiceImpl guestService;
 
     private final UserService userService;
 
-    private final RestaurantService restaurantService;
+    private final RestaurantServiceImpl restaurantService;
 
 
-    private final ReservationService reservationService;
+    private final ReservationServiceImpl reservationService;
 
 
     /**
@@ -46,11 +47,11 @@ public class AdminController {
      * @param reservationService - The service that provides reservation-related operations.
      */
     @Autowired
-    public AdminController(AdminService adminService, AdminValidator adminValidator,
-                           @Qualifier("guestServiceImpl") GuestService guestService,
-                           @Qualifier("userServiceImpl") UserService userService,
-                           @Qualifier("restaurantServiceImpl") RestaurantService restaurantService,
-                           ReservationService reservationService) {
+    public AdminController(AdminServiceImpl adminService, AdminValidator adminValidator,
+                           @Qualifier("GuestServiceImpl") GuestServiceImpl guestService,
+                           @Qualifier("UserServiceImpl") UserServiceImpl userService,
+                           @Qualifier("RestaurantServiceImpl") RestaurantServiceImpl restaurantService,
+                           ReservationServiceImpl reservationService) {
         this.adminService = adminService;
         this.adminValidator = adminValidator;
         this.guestService = guestService;

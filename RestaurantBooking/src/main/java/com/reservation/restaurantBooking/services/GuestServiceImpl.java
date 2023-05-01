@@ -2,8 +2,8 @@ package com.reservation.restaurantBooking.services;
 
 import com.reservation.restaurantBooking.entity.GuestEntity;
 import com.reservation.restaurantBooking.exceptions.GuestNotFoundException;
+import com.reservation.restaurantBooking.recordModels.*;
 import com.reservation.restaurantBooking.repository.GuestRepository;
-import com.reservation.restaurantBooking.recordModels.GuestRecord;
 import com.reservation.restaurantBooking.services.InterfacesForServices.GuestService;
 import com.reservation.restaurantBooking.validation.GuestValidator;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  *
  */
 @Service
-public abstract class GuestServiceImpl implements GuestService {
+public class GuestServiceImpl implements GuestService {
 
     private static final Logger log = LoggerFactory.getLogger(GuestServiceImpl.class);
 
@@ -119,5 +119,30 @@ public abstract class GuestServiceImpl implements GuestService {
     public void deleteGuest(Long id) {
         log.debug("Deleting the guest by id");
         guestRepository.deleteById(id);
+    }
+
+    @Override
+    public ReservationInfo createReservation(ReservationRequest request) {
+        return null;
+    }
+
+    @Override
+    public List<ReservationInfo> getReservations(ReservationQuery query) {
+        return null;
+    }
+
+    @Override
+    public ReservationInfo getById(Long reservationId) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(Long reservationId) {
+
+    }
+
+    @Override
+    public ReservationInfo updateReservation(Long reservationId, UpdateReservationRequest editRequest) {
+        return null;
     }
 }

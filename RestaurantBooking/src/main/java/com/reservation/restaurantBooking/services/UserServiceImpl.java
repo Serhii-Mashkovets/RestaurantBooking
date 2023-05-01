@@ -3,8 +3,7 @@ package com.reservation.restaurantBooking.services;
 import com.reservation.restaurantBooking.entity.ReservationEntity;
 import com.reservation.restaurantBooking.entity.UserEntity;
 import com.reservation.restaurantBooking.exceptions.UserNotFoundException;
-import com.reservation.restaurantBooking.recordModels.ReservationInfo;
-import com.reservation.restaurantBooking.recordModels.UserRecord;
+import com.reservation.restaurantBooking.recordModels.*;
 import com.reservation.restaurantBooking.repository.ReservationRepository;
 import com.reservation.restaurantBooking.repository.UserRepository;
 import com.reservation.restaurantBooking.services.InterfacesForServices.UserService;
@@ -28,7 +27,7 @@ import java.util.stream.Collectors;
  This class implements the UserService interface.
  */
 @Service
-public abstract class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -194,4 +193,28 @@ public abstract class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public ReservationInfo createReservation(ReservationRequest request) {
+        return null;
+    }
+
+    @Override
+    public List<ReservationInfo> getReservations(ReservationQuery query) {
+        return null;
+    }
+
+    @Override
+    public ReservationInfo getById(Long reservationId) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(Long reservationId) {
+
+    }
+
+    @Override
+    public ReservationInfo updateReservation(Long reservationId, UpdateReservationRequest editRequest) {
+        return null;
+    }
 }

@@ -60,7 +60,7 @@ public class ReservationEntity {
 
     @NotNull(message = "Must be more than 2 characters")
     @Basic
-    @Column(name = "restaurantId")
+    @Column(name = "restaurantId", insertable=false, updatable=false)
     private int restaurantId;
     @OneToMany(mappedBy = "reservationByReservationId")
     private Collection<GuestreservationsEntity> guestreservationsById;

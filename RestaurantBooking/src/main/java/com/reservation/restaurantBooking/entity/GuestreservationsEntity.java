@@ -35,16 +35,16 @@ import java.util.Objects;
 public class GuestreservationsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "guestID")
+    @Column(name = "guestID", insertable=false, updatable=false)
     private int guestId;
     @Basic
     @Column(name = "reservationID")
     private int reservationId;
     @ManyToOne
-    @JoinColumn(name = "guestID", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "guestID", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     private GuestEntity guestByGuestId;
     @ManyToOne
-    @JoinColumn(name = "reservationID", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "reservationID", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     private ReservationEntity reservationByReservationId;
 
     public int getGuestId() {

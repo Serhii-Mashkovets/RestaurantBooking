@@ -38,10 +38,10 @@ public class UserreservationsEntity {
     @Column(name = "reservationID")
     private int reservationId;
     @ManyToOne
-    @JoinColumn(name = "userID", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "userID", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     private UserEntity userByUserId;
     @ManyToOne
-    @JoinColumn(name = "reservationID", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "reservationID", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     private ReservationEntity reservationByReservationId;
 
     public int getUserId() {

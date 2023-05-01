@@ -1,6 +1,10 @@
 package com.reservation.restaurantBooking.configurations;
 
-import com.reservation.restaurantBooking.services.ReservationServiceImpl;
+import com.reservation.restaurantBooking.repository.*;
+import com.reservation.restaurantBooking.services.*;
+import com.reservation.restaurantBooking.validation.GuestValidator;
+import com.reservation.restaurantBooking.validation.RestaurantValidator;
+import com.reservation.restaurantBooking.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +28,47 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:application.properties")
 public class ApplicationConfig {
+
+
+    @Autowired
+    private GuestRepository guestRepository;
+    @Autowired
+    private GuestValidator guestValidator;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+    @Autowired
+    private RestaurantValidator restaurantValidator;
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserValidator userValidator;
+    @Autowired
+    private ReservationRepository reservationRepository;
+
+    @Bean
+    public AdminServiceImpl adminService() {
+        return new AdminServiceImpl();
+    }
+
+    @Bean
+    public GuestServiceImpl guestService() {
+        return new GuestServiceImpl(guestRepository, guestValidator);
+    }
+
+
+    @Bean
+    public RestaurantServiceImpl restaurantService() {
+        return new RestaurantServiceImpl(restaurantRepository, restaurantValidator);
+    }
+
+
+    @Bean
+    public UserServiceImpl userService() {
+        return new UserServiceImpl(userRepository, userValidator, reservationRepository);
+    }
+
 
     /**
      * The Environment object used to retrieve properties from the application.properties file.
@@ -69,16 +114,28 @@ public class ApplicationConfig {
      *
      * @return a new instance of LocalContainerEntityManagerFactoryBean.
      */
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+//        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
+//                new LocalContainerEntityManagerFactoryBean();
+//        entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
+//        entityManagerFactoryBean.setPackagesToScan(
+//                env.getRequiredProperty("com.reservation.restaurantBooking.entity"));
+//        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+//        entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
+//        return entityManagerFactoryBean;
+//    }
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
-                new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
-        entityManagerFactoryBean.setPackagesToScan(
-                env.getRequiredProperty("com.reservation.restaurantBooking.entity"));
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
-        return entityManagerFactoryBean;
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(true);
+
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan("com.reservation.restaurantBooking.entity");
+        factory.setDataSource(databaseConfig.dataSource());
+
+        return factory;
     }
 
     /**
@@ -96,4 +153,6 @@ public class ApplicationConfig {
         return transactionManager;
     }
 
+
 }
+
