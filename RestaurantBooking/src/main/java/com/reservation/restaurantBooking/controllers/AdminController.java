@@ -48,9 +48,9 @@ public class AdminController {
      */
     @Autowired
     public AdminController(AdminServiceImpl adminService, AdminValidator adminValidator,
-                           @Qualifier("GuestServiceImpl") GuestServiceImpl guestService,
-                           @Qualifier("UserServiceImpl") UserServiceImpl userService,
-                           @Qualifier("RestaurantServiceImpl") RestaurantServiceImpl restaurantService,
+                           @Qualifier("guestServiceImpl") GuestServiceImpl guestService,
+                           @Qualifier("userServiceImpl") UserServiceImpl userService,
+                           @Qualifier("restaurantServiceImpl") RestaurantServiceImpl restaurantService,
                            ReservationServiceImpl reservationService) {
         this.adminService = adminService;
         this.adminValidator = adminValidator;

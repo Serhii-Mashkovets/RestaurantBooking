@@ -30,45 +30,6 @@ import java.util.Properties;
 public class ApplicationConfig {
 
 
-    @Autowired
-    private GuestRepository guestRepository;
-    @Autowired
-    private GuestValidator guestValidator;
-
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-    @Autowired
-    private RestaurantValidator restaurantValidator;
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserValidator userValidator;
-    @Autowired
-    private ReservationRepository reservationRepository;
-
-    @Bean
-    public AdminServiceImpl adminService() {
-        return new AdminServiceImpl();
-    }
-
-    @Bean
-    public GuestServiceImpl guestService() {
-        return new GuestServiceImpl(guestRepository, guestValidator);
-    }
-
-
-    @Bean
-    public RestaurantServiceImpl restaurantService() {
-        return new RestaurantServiceImpl(restaurantRepository, restaurantValidator);
-    }
-
-
-    @Bean
-    public UserServiceImpl userService() {
-        return new UserServiceImpl(userRepository, userValidator, reservationRepository);
-    }
-
 
     /**
      * The Environment object used to retrieve properties from the application.properties file.
@@ -82,15 +43,6 @@ public class ApplicationConfig {
     @Autowired
     public DatabaseConfig databaseConfig;
 
-    /**
-     * Creates and returns a new instance of ReservationServiceImpl.
-     *
-     * @return a new instance of ReservationServiceImpl.
-     */
-    @Bean
-    public ReservationServiceImpl reservationService() {
-        return new ReservationServiceImpl();
-    }
 
     /**
      * Creates and returns a Properties object with the necessary properties for hibernate.
@@ -106,6 +58,16 @@ public class ApplicationConfig {
         return properties;
     }
 
+
+    private Properties setHibernateProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty("hibernate.show_sql", "true");
+
+        return properties;
+    }
+
+
     /**
      * Creates and returns a new instance of LocalContainerEntityManagerFactoryBean.
      * <p>
@@ -114,28 +76,17 @@ public class ApplicationConfig {
      *
      * @return a new instance of LocalContainerEntityManagerFactoryBean.
      */
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
-//                new LocalContainerEntityManagerFactoryBean();
-//        entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
-//        entityManagerFactoryBean.setPackagesToScan(
-//                env.getRequiredProperty("com.reservation.restaurantBooking.entity"));
-//        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-//        entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
-//        return entityManagerFactoryBean;
-//    }
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
+                new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
+        entityManagerFactoryBean.setPackagesToScan(
+                env.getRequiredProperty("com.reservation.restaurantBooking.entity"));
+        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        entityManagerFactoryBean.setJpaProperties(setHibernateProperties());
 
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.reservation.restaurantBooking.entity");
-        factory.setDataSource(databaseConfig.dataSource());
-
-        return factory;
+        return entityManagerFactoryBean;
     }
 
     /**

@@ -19,7 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
-import javax.sql.DataSource;
 
 
 /**
@@ -37,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * The data source used to authenticate users.
      */
     @Autowired
-    private DataSource dataSource;
+    private DatabaseConfig databaseConfig;
 
 
     /**
@@ -47,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
+        auth.jdbcAuthentication().dataSource(databaseConfig.dataSource())
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT name, email, password FROM user WHERE name=?");
     }
@@ -99,7 +98,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public JdbcUserDetailsManager userDetailsManager() {
         JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
-        userDetailsManager.setDataSource(dataSource);
+        userDetailsManager.setDataSource(databaseConfig.dataSource());
 
         UserDetails admin = User.builder()
                 .username("admin")
