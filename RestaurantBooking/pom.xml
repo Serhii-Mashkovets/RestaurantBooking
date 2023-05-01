@@ -12,17 +12,29 @@
     <artifactId>RestaurantBooking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <packaging>jar</packaging>
+
     <name>RestaurantBooking</name>
     <description>RestaurantBooking</description>
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
+
         <!-- Ця залежність забезпечує підтримку JDBC для Spring Boot додатку. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
+
+
+
+        <!-- Ця залежність надає підтримку JDBC для Spring Boot додатку. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
 
         <!--  Ця залежність забезпечує підтримку JPA (Java Persistence API —
         спецификация API Java EE, предоставляет возможность сохранять в удобном виде Java-объекты в базе данных.)
@@ -38,11 +50,12 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
-        <!-- Ця залежність надає підтримку JDBC для Spring Boot додатку. -->
+        <!-- Ця залежність надає підтримку сеансів JDBC для Spring Boot додатку -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
         </dependency>
+
 
         <!-- Ця залежність надає функції безпеки для вашої Spring Boot програми. -->
         <dependency>
@@ -62,11 +75,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Ця залежність надає підтримку сеансів JDBC для Spring Boot додатку -->
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-jdbc</artifactId>
-        </dependency>
+
 
         <!-- Ця залежність надає підтримку валідації для Spring Boot додатку. -->
         <dependency>
@@ -166,11 +175,21 @@
         </dependency>
 
 
+
         <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-jdbc</artifactId>
-            <version>2.5.2</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.1.Final</version>
         </dependency>
+
+
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+
 
     </dependencies>
 

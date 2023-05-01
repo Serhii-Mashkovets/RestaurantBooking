@@ -1,18 +1,13 @@
 package com.reservation.restaurantBooking.configurations;
 
-import com.reservation.restaurantBooking.repository.*;
-import com.reservation.restaurantBooking.services.*;
-import com.reservation.restaurantBooking.validation.GuestValidator;
-import com.reservation.restaurantBooking.validation.RestaurantValidator;
-import com.reservation.restaurantBooking.validation.UserValidator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
 
 import java.util.Properties;
 
@@ -42,6 +37,7 @@ public class ApplicationConfig {
      */
     @Autowired
     public DatabaseConfig databaseConfig;
+
 
 
     /**
@@ -76,18 +72,6 @@ public class ApplicationConfig {
      *
      * @return a new instance of LocalContainerEntityManagerFactoryBean.
      */
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
-                new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
-        entityManagerFactoryBean.setPackagesToScan(
-                env.getRequiredProperty("com.reservation.restaurantBooking.entity"));
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setJpaProperties(setHibernateProperties());
-
-        return entityManagerFactoryBean;
-    }
 
     /**
      * Creates and returns a new instance of JpaTransactionManager.
@@ -99,7 +83,7 @@ public class ApplicationConfig {
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        transactionManager.setEntityManagerFactory(databaseConfig.entityManagerFactory().getObject());
 
         return transactionManager;
     }

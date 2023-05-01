@@ -5,18 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 
-/**
- * This class provides configuration for the database connection.
- * It sets up a {@link DriverManagerDataSource} object as a Spring bean,
- * using the values specified in the application.properties file.
- */
 @Configuration
 public class DatabaseConfig {
-
     @Value("${spring.datasource.url}")
     private String url;
 
@@ -28,6 +27,35 @@ public class DatabaseConfig {
 
     @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
+
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String hibernateDdlAuto;
+
+    @Value("${spring.jpa.show-sql}")
+    private boolean showSql;
+
+    /**
+     * Configures the entity manager factory bean.
+     *
+     * @return the entity manager factory bean
+     */
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("com.reservation.restaurantBooking.entity");
+
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaVendorAdapter(vendorAdapter);
+
+        Properties properties = new Properties();
+        properties.put("hibernate.hbm2ddl.auto", hibernateDdlAuto);
+        properties.put("hibernate.show_sql", showSql);
+        em.setJpaProperties(properties);
+
+        return em;
+    }
+
 
 
     /**

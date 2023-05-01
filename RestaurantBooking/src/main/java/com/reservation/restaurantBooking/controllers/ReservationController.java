@@ -5,10 +5,12 @@ import com.reservation.restaurantBooking.recordModels.ReservationInfo;
 import com.reservation.restaurantBooking.recordModels.ReservationQuery;
 import com.reservation.restaurantBooking.recordModels.ReservationRequest;
 import com.reservation.restaurantBooking.recordModels.UpdateReservationRequest;
-import com.reservation.restaurantBooking.services.InterfacesForServices.ReservationService;
+
+import com.reservation.restaurantBooking.services.ReservationServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +36,9 @@ public class ReservationController {
     @Autowired
     private ApplicationContext ctx;
 
+
     @Autowired
-    private ReservationService reservationService;
+    private ReservationServiceImpl reservationService;
 
     @Operation(summary = "Query for reservations.",
             description = "Retrieves all persisted reservations. Optionally search for reservations matching by name, date and time.")

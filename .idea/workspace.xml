@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6f16878-9e79-4792-b549-bd051460a524" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/JpaUserDetailsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/RestaurantBookingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/RestaurantBookingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/DatabaseConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/configurations/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/java/com/reservation/restaurantBooking/controllers/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestaurantBooking/src/test/java/com/reservation/restaurantBooking/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantBooking/src/test/java/com/reservation/restaurantBooking/IntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,37 +56,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;aa9b549a-4842-4a39-9535-e00531a2d9ae&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finep/OneDrive/Робочий стіл/Проєкт 1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b783e7faf9ddd8a48629935abec273aa&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "aa9b549a-4842-4a39-9535-e00531a2d9ae",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/finep/OneDrive/Робочий стіл/Проєкт 1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Facets",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "spring.configuration.checksum": "b783e7faf9ddd8a48629935abec273aa",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.reservation.restaurantBooking.configurations" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\finep\OneDrive\Робочий стіл\Restaurant Booking Program\RestaurantBooking\src\main\resources\sql" />
     </key>
@@ -128,7 +135,7 @@
       <workItem from="1682840162381" duration="6134000" />
       <workItem from="1682863389476" duration="14988000" />
       <workItem from="1682925543803" duration="10156000" />
-      <workItem from="1682944473265" duration="2036000" />
+      <workItem from="1682944473265" duration="13291000" />
     </task>
     <servers />
   </component>

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.http.HttpMethod;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
@@ -17,8 +18,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
+import javax.persistence.EntityManagerFactory;
 
 
 /**
@@ -37,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     private DatabaseConfig databaseConfig;
+
 
 
     /**
@@ -96,9 +98,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * In this method, several example users are created for testing purposes.
      */
     @Bean
-    public JdbcUserDetailsManager userDetailsManager() {
-        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
-        userDetailsManager.setDataSource(databaseConfig.dataSource());
+    public JpaUserDetailsManager userDetailsManager() {
+        JpaUserDetailsManager userDetailsManager = new JpaUserDetailsManager();
+        userDetailsManager.setEntityManagerFactory((EntityManagerFactory) databaseConfig.entityManagerFactory());
 
         UserDetails admin = User.builder()
                 .username("admin")
@@ -125,4 +127,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         return userDetailsManager;
     }
+
+
+
+
+
 }
