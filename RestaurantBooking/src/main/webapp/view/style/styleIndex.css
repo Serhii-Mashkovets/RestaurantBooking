@@ -1,0 +1,34 @@
+#video-bg {
+  z-index: -1;
+}
+
+.col4 {
+  margin-top: 30 px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.col5 {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.col6 {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.bottom-underline-section {
+  border-bottom: 3px solid rgb(240, 236, 236);
+}
+
+.col7 {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    position: relative;
+}

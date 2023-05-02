@@ -1,0 +1,87 @@
+a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  table {
+    border: 1px solid black;
+    margin-bottom: 40px;
+  }
+
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #ccc;
+    color: #373636;
+    font-size: large;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  td:first-child {
+    border-right: 2px solid #ddd;
+  }
+  
+
+.zero-one {
+    background-color: rgb(223, 190, 146);
+}
+
+.first-one {
+    background-color: rgb(160, 243, 160);
+}
+
+.second-one {
+    background-color: rgb(126, 126, 238);
+}
+
+.third-one {
+    background-color: rgb(125, 215, 246);
+}
+
+.fours-one {
+    background-color: rgb(255, 105, 105); 
+}
+
+.fifs-one {
+    background-color: rgb(87, 190, 87);
+}
+
+ .zero {
+    background-color: rgb(231, 210, 183);
+ } 
+  
+
+.first { /* перший рядок таблиці */
+    background-color: rgb(188, 246, 188); /* зелений колір для "Створити новий екземпляр" */
+  }
+  
+ .second { /* другий рядок таблиці */
+    background-color: rgb(150, 150, 250); /* синій колір для "Знайти екземпляр по id" */
+  }
+  
+ .third { /* третій рядок таблиці */
+    background-color: lightblue; /* голубий колір для "Знайти всі екземпляри" */
+  }
+  
+  .fours { /* четвертий рядок таблиці */
+    background-color: lightcoral; /* світло червоний колір для "Видалити екземпляр по id" */
+  }
+  
+  .fifs { /* п'ятий рядок таблиці */
+    background-color: rgb(118, 224, 118); /* світло зелений колір для "Вивести всі резервування для екземпляру" */
+  }
+
+  .under {
+    margin: 30px;
+  }
+
+  .upTo {
+    margin-top: 20px;
+  }
+  
